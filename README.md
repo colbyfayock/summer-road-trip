@@ -17,13 +17,13 @@ Deploy your own! Once it's ready, you can change the name and content within you
 * [Leaflet](https://leafletjs.com/)
 * [React Leaflet](https://react-leaflet.js.org)
 
-# Getting Started
+## Getting Started
 
-## Requirements
+### Requirements
 * [Gatsby CLI](https://www.npmjs.com/package/gatsby-cli)
 * [Yarn](https://yarnpkg.com/en/)
 
-## Installation
+### Installation
 * Set up Yarn: https://yarnpkg.com/lang/en/docs/install/#mac-stable)[https://yarnpkg.com/lang/en/docs/install/
 * Install the Gatsby CLI globally:
 ```
@@ -43,12 +43,12 @@ yarn develop
 ```
 * You should now be running your summer road trip app locally! 🎉
 
-## Configuring Your Road Trip
+### Configuring Your Road Trip
 
-### Updating the name
+#### Updating the name
 In `gatsby-config.js`, you can update the `title` and the `githubUrl`. Doing this will update the the header of our road trip site.
 
-### Updating the trip locations
+#### Updating the trip locations
 In `src/data/locations.js`, you can add, remove, or update the objects inside of the `locations` object.
 
 The `image` property isn't required, but to utilize it, you can either import a local image like in the starter or you  can use a URL to an external file.
