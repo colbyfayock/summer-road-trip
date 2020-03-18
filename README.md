@@ -42,3 +42,13 @@ gatsby new new-gatsby-site https://github.com/colbyfayock/summer-road-trip
 yarn develop
 ```
 * You should now be running your summer road trip app locally! 🎉
+
+## Configuring Your Road Trip
+
+### Updating the name
+In `gatsby-config.js`, you can update the `title` and the `githubUrl`. Doing this will update the the header of our road trip site.
+
+### Updating the trip locations
+In `src/data/locations.js`, you can add, remove, or update the objects inside of the `locations` object.
+
+The `image` property isn't required, but to utilize it, you can either import a local image like in the starter or you  can use a URL to an external file.
