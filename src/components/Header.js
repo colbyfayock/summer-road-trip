@@ -1,13 +1,23 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { FaGithub } from 'react-icons/fa';
 
+import { useSiteMetadata } from 'hooks';
 import Container from 'components/Container';
 
 const Header = () => {
+  const { title, githubUrl } = useSiteMetadata();
   return (
     <header>
       <Container type="content">
-        <p>Colbana's Summer Road Trip</p>
+        <h1>
+          { title }
+        </h1>
+        <p className="header-subtitle">
+          <a href={githubUrl}>
+            <FaGithub />
+            View on Github
+          </a>
+        </p>
       </Container>
     </header>
   );

@@ -1,4 +1,8 @@
 module.exports = {
+  siteMetadata: {
+    title: `Colbana's Summer Road Trip`,
+    githubUrl: 'https://github.com/colbyfayock/summer-road-trip'
+  },
   plugins: [
     'gatsby-plugin-resolve-src',
     'gatsby-plugin-sass',

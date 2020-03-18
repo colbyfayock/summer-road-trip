@@ -8,18 +8,11 @@ import Map from 'components/Map';
 
 import { locations } from 'data/locations';
 
-const LOCATION = {
-  lat: 0,
-  lng: 0
-};
-const CENTER = [LOCATION.lat, LOCATION.lng];
-const DEFAULT_ZOOM = 4;
-
 const IndexPage = () => {
   /**
    * mapEffect
    * @description Fires a callback once the page renders
-   * @example Here this is and example of being used to zoom in and set a popup on load
+   * @example Here this is an example of creating a route for a road trip
    */
 
   function mapEffect({ leafletElement: map } = {}) {
@@ -27,58 +20,8 @@ const IndexPage = () => {
 
     map.eachLayer((layer) => map.removeLayer(layer));
 
-    const tripPoints = {
-      "type": "FeatureCollection",
-      "features": locations.map(({ placename, location = {}, image, date, todo = [] } = {}) => {
-        const { lat, lng } = location;
-        return {
-          "type": "Feature",
-          "properties": {
-            placename,
-            todo,
-            date,
-            image
-          },
-          "geometry": {
-            "type": "Point",
-            "coordinates": [ lng, lat ]
-          }
-        }
-      })
-    }
-
-    const tripLines = {
-      "type": "FeatureCollection",
-      "features": locations.map((stop = {}, index) => {
-        const prevStop = locations[index - 1];
-
-        if ( !prevStop ) return [];
-
-        const { placename, location = {}, date, todo = [] } = stop;
-        const { lat, lng } = location;
-        const properties = {
-          placename,
-          todo,
-          date
-        };
-
-        const { location: prevLocation = {} } = prevStop;
-        const { lat: prevLat, lng: prevLng } = prevLocation;
-
-        return {
-          type: 'Feature',
-          properties,
-          geometry: {
-            type: 'LineString',
-            coordinates: [
-              [ prevLng, prevLat ],
-              [ lng, lat ]
-            ]
-          }
-        }
-      })
-    }
-
+    const tripPoints = createTripPointsGeoJson({ locations });
+    const tripLines = createTripLinesGeoJson({ locations });
 
     const tripPointsGeoJsonLayers = new L.geoJson(tripPoints, {
       pointToLayer: tripStopPointToLayer
@@ -95,9 +38,7 @@ const IndexPage = () => {
   }
 
   const mapSettings = {
-    center: CENTER,
     defaultBaseMap: 'OpenStreetMap',
-    zoom: DEFAULT_ZOOM,
     mapEffect
   };
 
@@ -111,36 +52,114 @@ const IndexPage = () => {
 
       <Container type="content" className="text-center home-start">
 
-        <h2>Learn how to make your own road trip map!</h2>
+        <div className="container-section">
+          <h2>Learn how to make your own road trip map!</h2>
 
-        <p>
-          <a class="button" href="https://www.freecodecamp.org/news/create-your-own-santa-tracker-with-gatsby-and-react-leaflet/">
-            Tutorial on FreeCodeCamp.org
-          </a>
-        </p>
+          <p>
+            <a className="button" href="https://www.freecodecamp.org/news/author/colbyfayock/">
+              Tutorial on FreeCodeCamp.org
+            </a>
+          </p>
+        </div>
 
-        <br />
-        <br />
+        <div className="container-section">
+          <h2>Or drive right in!</h2>
 
-        <h2>Build your own mapping app!</h2>
+          <p>Run the following in your terminal!</p>
 
-        <p>Run the following in your terminal!</p>
+          <pre>
+            <code>
+              gatsby new [directory] https://github.com/colbyfayock/summer-road-trip
+            </code>
+          </pre>
+        </div>
 
-        <pre>
-          <code>
-            gatsby new [directory] https://github.com/colbyfayock/gatsby-starter-leaflet
-          </code>
-        </pre>
+        <div className="container-section">
+          <h2>Want to build your own mapping app?</h2>
 
-        <p class="note">
-          Note: Gatsby CLI required globally for the above command
-        </p>
+          <pre>
+            <code>
+              gatsby new [directory] https://github.com/colbyfayock/gatsby-starter-leaflet
+            </code>
+          </pre>
+        </div>
+
+        <div className="container-section">
+          <p className="note">
+            Note: <a href="https://www.gatsbyjs.org/docs/gatsby-cli/">Gatsby CLI</a> required globally for the above commands
+          </p>
+        </div>
+
       </Container>
     </Layout>
   );
 };
 
 export default IndexPage;
+
+/**
+ * tripStopPointToLayer
+ */
+
+function createTripPointsGeoJson({ locations } = {}) {
+  return {
+    "type": "FeatureCollection",
+    "features": locations.map(({ placename, location = {}, image, date, todo = [] } = {}) => {
+      const { lat, lng } = location;
+      return {
+        "type": "Feature",
+        "properties": {
+          placename,
+          todo,
+          date,
+          image
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ lng, lat ]
+        }
+      }
+    })
+  }
+}
+
+/**
+ * tripStopPointToLayer
+ */
+
+function createTripLinesGeoJson({ locations } = {}) {
+  return {
+    "type": "FeatureCollection",
+    "features": locations.map((stop = {}, index) => {
+      const prevStop = locations[index - 1];
+
+      if ( !prevStop ) return [];
+
+      const { placename, location = {}, date, todo = [] } = stop;
+      const { lat, lng } = location;
+      const properties = {
+        placename,
+        todo,
+        date
+      };
+
+      const { location: prevLocation = {} } = prevStop;
+      const { lat: prevLat, lng: prevLng } = prevLocation;
+
+      return {
+        type: 'Feature',
+        properties,
+        geometry: {
+          type: 'LineString',
+          coordinates: [
+            [ prevLng, prevLat ],
+            [ lng, lat ]
+          ]
+        }
+      }
+    })
+  }
+}
 
 /**
  * tripStopPointToLayer
