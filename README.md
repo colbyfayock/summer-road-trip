@@ -17,7 +17,7 @@ Deploy your own! Once it's ready, you can change the name and content within you
 * [Leaflet](https://leafletjs.com/)
 * [React Leaflet](https://react-leaflet.js.org)
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Requirements
 * [Gatsby CLI](https://www.npmjs.com/package/gatsby-cli)
