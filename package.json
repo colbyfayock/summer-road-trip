@@ -1,6 +1,6 @@
 {
-  "name": "colbana-road-trip-2015",
-  "description": "Colbana's 2015 summer road trip!",
+  "name": "summer-road-trip",
+  "description": "Gatsby starter for creating a summer road trip app!",
   "version": "0.1.0",
   "author": "Colby Fayock <hello@colbyfayock.com>",
   "dependencies": {
@@ -67,9 +67,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/colbyfayock/colbana-road-trip-2015"
+    "url": "https://github.com/colbyfayock/summer-road-trip"
   },
   "bugs": {
-    "url": "https://github.com/colbyfayock/colbana-road-trip-2015/issues"
+    "url": "https://github.com/colbyfayock/summer-road-trip/issues"
   }
 }

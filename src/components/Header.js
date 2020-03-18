@@ -12,12 +12,14 @@ const Header = () => {
         <h1>
           { title }
         </h1>
-        <p className="header-subtitle">
-          <a href={githubUrl}>
-            <FaGithub />
-            View on Github
-          </a>
-        </p>
+        { githubUrl && (
+          <p className="header-subtitle">
+            <a href={githubUrl}>
+              <FaGithub />
+              View on Github
+            </a>
+          </p>
+        )}
       </Container>
     </header>
   );

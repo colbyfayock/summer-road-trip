@@ -6,6 +6,13 @@ import Layout from 'components/Layout';
 import Container from 'components/Container';
 import Map from 'components/Map';
 
+/***************************************************
+ * HOW TO MODIFY YOUR ROAD TRIP MAP                *
+ ***************************************************
+ * To update the locations and pictures for        *
+ * your map, visit the file src/data/locations.js. *
+ ***************************************************/
+
 import { locations } from 'data/locations';
 
 const IndexPage = () => {
