@@ -63,8 +63,8 @@ const IndexPage = () => {
           <h2>Learn how to make your own road trip map!</h2>
 
           <p>
-            <a className="button" href="https://www.freecodecamp.org/news/author/colbyfayock/">
-              Tutorial on FreeCodeCamp.org
+            <a className="button" href="https://www.colbyfayock.com/2020/03/how-to-create-a-summer-road-trip-mapping-app-with-gatsby-and-leaflet/">
+              Tutorial on colbyfayock.com
             </a>
           </p>
         </div>
